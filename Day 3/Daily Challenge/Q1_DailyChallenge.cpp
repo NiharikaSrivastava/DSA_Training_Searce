@@ -12,7 +12,7 @@ int main()
     int serveTime = v[0].first; //initialize with first orderTime
     pair<int, int> order;
     int averageWT;
-    int totalCookingTime = 0;
+    int totalWaitingTime = 0;
     set<pair<int, int>> cookQueue; //set stores elements in sorted order always
     int iter = 0;
     while (iter < N || cookQueue.size())
@@ -30,10 +30,10 @@ int main()
             int i = cookQueue.begin()->second; //index of cookTime
             cookQueue.erase(cookQueue.begin()); //remove current order from set
             serveTime += v[i].second; //accessing cookTime through index
-            totalCookingTime += serveTime - v[i].first; //serve time - order time
+            totalWaitingTime += serveTime - v[i].first; //serve time - order time
         }
     }
-    averageWT = totalCookingTime / N;
+    averageWT = totalWaitingTime / N;
     cout << averageWT << endl;
     return 0;
 }
